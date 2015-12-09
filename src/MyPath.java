@@ -8,12 +8,13 @@ import java.util.List;
 
 public class MyPath<E> implements Path<E> {
 
-    public MyPath(List<BStop> stops, List<BLineTable> lines) {
-
-    }
-
     private LinkedList<E> currentPath;
     private int pathLength;
+    private Network network;
+
+    public MyPath(List<BStop> stops, List<BLineTable> lines) {
+        network = new Network(stops, lines);
+    }
 
     @Override
     public void computePath(E from, E to) {
