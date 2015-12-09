@@ -21,4 +21,6 @@ public class Network<E> {
         E value;
         ArrayList<Pair<Node<E>,Integer>> adjacents;
     }
+
+    
 }
