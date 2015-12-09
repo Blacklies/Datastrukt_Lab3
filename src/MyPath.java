@@ -11,13 +11,18 @@ public class MyPath<E> implements Path<E> {
     private LinkedList<E> currentPath;
     private int pathLength;
     private Network network;
+    private Djikstra<E> djikstra;
 
     public MyPath(List<BStop> stops, List<BLineTable> lines) {
+
+        //magic
+
         network = new Network(stops, lines);
     }
 
     @Override
     public void computePath(E from, E to) {
+        djikstra.computeFromTo(network, from, to);
 
     }
 
