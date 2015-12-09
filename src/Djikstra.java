@@ -1,15 +1,14 @@
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
-public class Djikstra {
+public class Djikstra<T> {
 
     private PriorityQueue<Network.Node> pq;
     private HashMap<Network.Node, Integer> dist;
     private HashMap<Network.Node, Network.Node> prev;
 
-    public void doDijkstra(Network n, Network.Node start) {
-
-//        dist[source]←0                            // Initialization
+    public void djikstra(Network n, T start){
+        //        dist[source]←0                            // Initialization
 //
 //        create vertex set Q
 //
@@ -32,5 +31,11 @@ public class Djikstra {
 //        Q.decrease_priority(v, alt)
 //
 //        return dist[],prev[]
+    }
+
+    public void computeFromTo(Network n, T start, T end) {
+        djikstra(n,start);
+        //use the end to solve this
+
     }
 }
