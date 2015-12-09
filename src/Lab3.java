@@ -1,16 +1,12 @@
-/**
- * Created by OlofEkborg on 2015-12-09.
- */
 
-import Lab3Help.BLineTable;
-import Lab3Help.BStop;
-import Lab3Help.Lab3File;
-import Lab3Help.Path;
 
+import Lab3Help.*;
+
+import java.io.IOException;
 import java.util.List;
 
 public class Lab3 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, MalformedData {
         Lab3File f = new Lab3File();
         List<BStop> stops = f.readStops("stops-gbg.txt");
         List<BLineTable> lines = f.readLines("lines-gbg.txt");
