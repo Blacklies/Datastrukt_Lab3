@@ -1,5 +1,3 @@
-
-
 import Lab3Help.*;
 
 import java.io.IOException;
@@ -12,12 +10,9 @@ public class Lab3 {
         List<BLineTable> lines = f.readLines("lines-gbg.txt");
         Path<String> p = new MyPath(stops, lines);
 
-
-
-
-        p.computePath("Chalmers","Angered");
-        System.out.println("Distance: " + p.getPathLength());
-        p.computePath("Chalmers","GuldHeden");
-        System.out.println("Distance: " + p.getPathLength());
+//        p.computePath("Chalmers","Angered");
+//        System.out.println("Distance: " + p.getPathLength());
+//        p.computePath("Chalmers","GuldHeden");
+//        System.out.println("Distance: " + p.getPathLength());
     }
 }

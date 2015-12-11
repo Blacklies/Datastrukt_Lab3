@@ -7,7 +7,7 @@ public class Djikstra<T> {
     private HashMap<Network.Node, Integer> dist;
     private HashMap<Network.Node, Network.Node> prev;
 
-    public void djikstra(Network n, T start){
+    public void djikstra(Network n, T start) {
         //        dist[source]←0                            // Initialization
 //
 //        create vertex set Q
@@ -34,7 +34,7 @@ public class Djikstra<T> {
     }
 
     public void computeFromTo(Network n, T start, T end) {
-        djikstra(n,start);
+        djikstra(n, start);
         //use the end to solve this
 
     }
