@@ -43,7 +43,7 @@ public class Dijkstra<T> {
                 }
             }
         }
-        throw new Exception("det har ballat ur som fan");
+        throw new NoPathException("there is no path");
     }
 
     private class DijkstraNode<T> {
@@ -62,7 +62,7 @@ public class Dijkstra<T> {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            DijkstraNode<?> that = (DijkstraNode<?>) o;
+            DijkstraNode<T> that = (DijkstraNode<T>) o;
 
             return !(node != null ? !node.equals(that.node) : that.node != null);
         }
@@ -71,5 +71,11 @@ public class Dijkstra<T> {
         public int hashCode() {
             return node != null ? node.hashCode() : 0;
         }
+    }
+}
+
+class NoPathException extends Exception {
+    public NoPathException(String message) {
+        super(message);
     }
 }
