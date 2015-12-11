@@ -21,7 +21,7 @@ public class Dijkstra<T> {
                 int totalLength = currentNode.cost;
 
                 //write to the passed path queue
-                while (currentNode.previous != null) {
+                while (currentNode != null) {
                     resultingPath.addFirst(currentNode.node.value);
                     currentNode = currentNode.previous;
                 }
