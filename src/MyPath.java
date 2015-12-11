@@ -32,13 +32,13 @@ public class MyPath implements Path<String> {
     @Override
     public void computePath(String from, String to) {
         if (network.getNode(from) == null || network.getNode(to) == null){
-            System.out.println("from or to does not exist");
+            System.out.println("Denna hållplats existerar inte i detta nätverk!");
             return;
         }
         try {
             pathLength = djikstra.computeFromTo(network, from, to, currentPath);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Det finns ingen väg mellan "+from+" till "+to+".");
         }
     }
 
