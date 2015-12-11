@@ -16,8 +16,7 @@ public class MyPath<E> implements Path<E> {
     public MyPath(List<BStop> stops, List<BLineTable> lines) {
 
         //magic
-        lines.get(0).getStops()
-        network = new Network((List<String>) stops);
+//        network = new Network();
     }
 
     @Override
