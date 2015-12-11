@@ -1,12 +1,7 @@
-import Lab3Help.BLineTable;
-import Lab3Help.BStop;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Network<E> {
+
     private ArrayList<Node<E>> nodes;
     private HashMap<E, Node<E>> nodeMap;
 
@@ -25,27 +20,46 @@ public class Network<E> {
         Node<E> nodeB = nodeMap.get(B); // Lägga till exception?
 
         nodeA.addAdjacent(nodeB, weight);
-        nodeB.addAdjacent(nodeA, weight);
+        //nodeB.addAdjacent(nodeA, weight);
     }
 
     public Iterator<Node<E>> getNodes() {
         return nodes.iterator();
     }
 
-
     public static class Node<E> {
+
+        public final E value;
+        private final int hash;
+        private HashSet<Pair<Node<E>, Integer>> adjacents;
 
         public Node(E value) {
             this.value = value;
+            this.hash = value.hashCode();
         }
 
         public void addAdjacent(Node<E> node, Integer weight) {
             adjacents.add(new Pair<>(node, weight));
         }
 
-        E value;
-        ArrayList<Pair<Node<E>, Integer>> adjacents;
+        public Iterator<Pair<Node<E>, Integer>> getAdjacents() {
+            return adjacents.iterator();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Node<?> node = (Node<?>) o;
+
+            return hashCode() == node.hashCode() && value == node.value;
+        }
+
+        @Override
+        public int hashCode() {
+            return hash;
+        }
     }
-
-
 }
+
