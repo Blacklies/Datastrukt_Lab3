@@ -7,6 +7,7 @@ public class Network<E> {
 
     public Network(List<E> nodeValues) {
         nodes = new ArrayList<>(nodeValues.size());
+        nodeMap = new HashMap<>(nodeValues.size());
 
         for (E value : nodeValues) {
             Node<E> node = new Node<>(value);
@@ -31,7 +32,7 @@ public class Network<E> {
         Iterator<Node<E>> nodesItr = getNodes();
         while (nodesItr.hasNext()){
             Node<E> next = nodesItr.next();
-            System.out.println(next.value.toString()+"has connections:");
+            System.out.println(next.value.toString()+" has connections:");
             Iterator<Pair<Node<E>, Integer>> adjItr = next.getAdjacents();
             while(adjItr.hasNext()){
                 System.out.println(adjItr.next().toString());
@@ -72,6 +73,11 @@ public class Network<E> {
         @Override
         public int hashCode() {
             return hash;
+        }
+
+        @Override
+        public String toString() {
+            return value.toString();
         }
     }
 }
