@@ -47,21 +47,22 @@ public class Dijkstra<T> {
                 }
                 return totalLength;
             }
+
+            explored.add(node);
+
             //iterate through all the connected nodes
             Iterator<Pair<Network.Node<T>, Integer>> adjacentsItr = node.node.getAdjacents();
             while (adjacentsItr.hasNext()) {
                 Pair<Network.Node<T>, Integer> adjacentInfo = adjacentsItr.next();
+                // create a new node based on our current position and cost
                 DijkstraNode<T> adjacentNode = new DijkstraNode<>(adjacentInfo.first, adjacentInfo.second + node.cost, node);
+                // if we have not already explored this node, we add it to the frontier
                 if (!explored.contains(adjacentNode)) {
                     frontier.suggest(adjacentNode);
                 }
-
             }
-            explored.add(node);
-
         }
         throw new Exception("det har ballat ur som fan");
-
     }
 
     private class DijkstraNode<T> {
