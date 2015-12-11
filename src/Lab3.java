@@ -16,11 +16,5 @@ public class Lab3 {
         Iterator<String> path = p.getPath();
         path.forEachRemaining(System.out::println);
 
-
-        p.computePath("SFO", "MIA");
-        System.out.println("Distance: " + p.getPathLength());
-        path = p.getPath();
-        path.forEachRemaining(System.out::println);
-
     }
 }

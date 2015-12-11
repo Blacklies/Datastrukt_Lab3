@@ -37,7 +37,7 @@ public class MyPath implements Path<String> {
         }
         try {
             pathLength = djikstra.computeFromTo(network, from, to, currentPath);
-        } catch (Exception e) {
+        } catch (NoPathException e) {
             System.out.println("Det finns ingen väg mellan "+from+" till "+to+".");
         }
     }

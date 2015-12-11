@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class Dijkstra<T> {
 
-    public int computeFromTo(Network<T> n, T start, T end, Deque<T> resultingPath) throws Exception {
+    public int computeFromTo(Network<T> n, T start, T end, Deque<T> resultingPath) throws NoPathException {
         PriorityQueue<DijkstraNode<T>> frontier = new PriorityQueue<>((o1, o2) -> o1.cost.compareTo(o2.cost));
         HashSet<DijkstraNode<T>> explored = new HashSet<>();
         DijkstraNode<T> currentNode = new DijkstraNode<T>(n.getNode(start), 0, null);
