@@ -3,18 +3,15 @@ import Lab3Help.BLineTable;
 import Lab3Help.BStop;
 import Lab3Help.Path;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MyPath implements Path<String> {
 
-    private LinkedList<String> currentPath;
+    private Deque<String> currentPath;
     private int pathLength;
     private Network<String> network;
-    private Djikstra<String> djikstra;
+    private Dijkstra<String> djikstra;
 
     public MyPath(List<BStop> stops, List<BLineTable> lines) {
         ArrayList<String> hplatser = stops.stream().map(BStop::getName).collect(Collectors.toCollection(ArrayList::new));
@@ -32,7 +29,11 @@ public class MyPath implements Path<String> {
 
     @Override
     public void computePath(String from, String to) {
-        djikstra.computeFromTo(network, from, to);
+        try {
+            djikstra.computeFromTo(network, from, to, currentPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -24,24 +24,27 @@ public class Network<E> {
         //nodeB.addAdjacent(nodeA, weight);
     }
 
+    public Node<E> getNode(E value) {
+        return nodeMap.get(value);
+    }
+
     public Iterator<Node<E>> getNodes() {
         return nodes.iterator();
     }
 
     public void printNetwork() {
         Iterator<Node<E>> nodesItr = getNodes();
-        while (nodesItr.hasNext()){
+        while (nodesItr.hasNext()) {
             Node<E> next = nodesItr.next();
-            System.out.println(next.value.toString()+" has connections:");
+            System.out.println(next.value.toString() + " has connections:");
             Iterator<Pair<Node<E>, Integer>> adjItr = next.getAdjacents();
-            while(adjItr.hasNext()){
+            while (adjItr.hasNext()) {
                 System.out.println(adjItr.next().toString());
             }
         }
     }
 
     public static class Node<E> {
-
         public final E value;
         private final int hash;
         private HashSet<Pair<Node<E>, Integer>> adjacents;
@@ -52,7 +55,7 @@ public class Network<E> {
             this.adjacents = new HashSet<>();
         }
 
-        public void addAdjacent(Node<E> node, Integer weight) {
+        protected void addAdjacent(Node<E> node, Integer weight) {
             adjacents.add(new Pair<>(node, weight));
         }
 

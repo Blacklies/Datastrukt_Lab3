@@ -39,6 +39,8 @@ public class Dijkstra<T> {
             //see if we have reached the goal
             if (node.node.equals(goal)) {
                 int totalLength = node.cost;
+
+                //write to the passed path queue
                 while (node.previous != null) {
                     resultingPath.addFirst(node.node.value);
                     node = node.previous;
