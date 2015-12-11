@@ -7,12 +7,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MyPath<E> implements Path<E> {
+public class MyPath implements Path<String > {
 
-    private LinkedList<E> currentPath;
+    private LinkedList<String> currentPath;
     private int pathLength;
-    private Network network;
-    private Djikstra<E> djikstra;
+    private Network<String> network;
+    private Djikstra<String> djikstra;
 
     public MyPath(List<BStop> stops, List<BLineTable> lines) {
     ArrayList<String> hplatser = new ArrayList<>();
@@ -20,18 +20,18 @@ public class MyPath<E> implements Path<E> {
             hplatser.add(stop.getName());
         }
 
-        network = new Network(hplatser);
+        network = new Network<>(hplatser);
 
     }
 
     @Override
-    public void computePath(E from, E to) {
+    public void computePath(String from, String to) {
         djikstra.computeFromTo(network, from, to);
 
     }
 
     @Override
-    public Iterator<E> getPath() {
+    public Iterator<String> getPath() {
         return currentPath.iterator();
     }
 
