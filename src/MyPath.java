@@ -2,6 +2,7 @@ import Lab3Help.BLineTable;
 import Lab3Help.BStop;
 import Lab3Help.Path;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,9 +15,13 @@ public class MyPath<E> implements Path<E> {
     private Djikstra<E> djikstra;
 
     public MyPath(List<BStop> stops, List<BLineTable> lines) {
+    ArrayList<String> hplatser = new ArrayList<>();
+        for (BStop stop:stops) {
+            hplatser.add(stop.getName());
+        }
 
-        //magic
-//        network = new Network();
+        network = new Network(hplatser);
+
     }
 
     @Override
