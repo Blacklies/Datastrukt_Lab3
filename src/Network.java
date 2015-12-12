@@ -47,20 +47,26 @@ public class Network<E> {
     public static class Node<E> {
         public final E value;
         private final int hash;
-        private HashSet<Pair<Node<E>, Integer>> adjacents;
+        private HashMap<Pair<Node<E>, Integer>,Pair<Node<E>,Integer>> adjacents;
 
         public Node(E value) {
             this.value = value;
             this.hash = value.hashCode();
-            this.adjacents = new HashSet<>();
+            this.adjacents = new HashMap<>();
         }
 
         protected void addAdjacent(Node<E> node, Integer weight) {
-            adjacents.add(new Pair<>(node, weight));
+            Pair<Node<E>,Integer> newNode = new Pair<>(node, weight);
+            Pair<Node<E>,Integer> oldNode = adjacents.get(newNode);
+            if (oldNode == null){
+                adjacents.put(newNode,newNode);
+            }else if(oldNode.second>newNode.second){
+                adjacents.put(newNode,newNode);
+            }
         }
 
         public Iterator<Pair<Node<E>, Integer>> getAdjacents() {
-            return adjacents.iterator();
+            return adjacents.values().iterator();
         }
 
         @Override

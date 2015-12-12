@@ -5,9 +5,9 @@ import java.util.Iterator;
 public class Dijkstra<T> {
 
     public int computeFromTo(Network<T> n, T start, T end, Deque<T> resultingPath) throws NoPathException {
-        PriorityQueue<DijkstraNode<T>> frontier = new PriorityQueue<>((o1, o2) -> o1.cost.compareTo(o2.cost));
-        HashSet<DijkstraNode<T>> explored = new HashSet<>();
-        DijkstraNode<T> currentNode = new DijkstraNode<T>(n.getNode(start), 0, null);
+        PriorityQueue<DijkstraNode> frontier = new PriorityQueue<>((o1, o2) -> o1.cost.compareTo(o2.cost));
+        HashSet<DijkstraNode> explored = new HashSet<>();
+        DijkstraNode currentNode = new DijkstraNode(n.getNode(start), 0, null);
         frontier.suggest(currentNode);
         Network.Node<T> goal = n.getNode(end);
 
@@ -36,7 +36,7 @@ public class Dijkstra<T> {
             while (adjacentsItr.hasNext()) {
                 Pair<Network.Node<T>, Integer> adjacentInfo = adjacentsItr.next();
                 // create a new node based on our current position and cost
-                DijkstraNode<T> adjacentNode = new DijkstraNode<>(adjacentInfo.first, adjacentInfo.second + currentNode.cost, currentNode);
+                DijkstraNode adjacentNode = new DijkstraNode(adjacentInfo.first, adjacentInfo.second + currentNode.cost, currentNode);
                 // if we have not already explored this node, we add it to the frontier
                 if (!explored.contains(adjacentNode)) {
                     frontier.suggest(adjacentNode);
@@ -46,12 +46,12 @@ public class Dijkstra<T> {
         throw new NoPathException("there is no path");
     }
 
-    private class DijkstraNode<T> {
+    private class DijkstraNode {
         Network.Node<T> node;
         Integer cost;
-        DijkstraNode<T> previous;
+        DijkstraNode previous;
 
-        public DijkstraNode(Network.Node<T> node, Integer cost, DijkstraNode<T> previous) {
+        public DijkstraNode(Network.Node<T> node, Integer cost, DijkstraNode previous) {
             this.node = node;
             this.cost = cost;
             this.previous = previous;
@@ -62,7 +62,7 @@ public class Dijkstra<T> {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            DijkstraNode<T> that = (DijkstraNode<T>) o;
+            DijkstraNode that = (DijkstraNode) o;
 
             return !(node != null ? !node.equals(that.node) : that.node != null);
         }

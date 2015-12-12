@@ -116,7 +116,7 @@ public class PriorityQueue<E> {
             return true;
         }
         //kolla om det nya värdet är större
-        if (comp.compare(queue.get(index), obj) >= 0) {
+        if (comp.compare(queue.get(index), obj) <= 0) {
             return false;
         }
         set(index, obj);
