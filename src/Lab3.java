@@ -6,6 +6,11 @@ import java.util.List;
 
 public class Lab3 {
     public static void main(String[] args) throws IOException, MalformedData {
+
+        if(args.length != 4){
+            System.out.println("GÅR INTE DÖÖÖ");
+            return;
+        }
         Lab3File f = new Lab3File();
         List<BStop> stops = f.readStops(args[0]);
         List<BLineTable> lines = f.readLines(args[1]);
@@ -15,6 +20,15 @@ public class Lab3 {
         System.out.println(p.getPathLength());
         Iterator<String> path = p.getPath();
         path.forEachRemaining(System.out::println);
-
+//
+//        Lab3File f = new Lab3File();
+//        List<BStop> stops = f.readStops("stops-air.txt");
+//        List<BLineTable> lines = f.readLines("lines-air.txt");
+//        Path<String> p = new MyPath(stops, lines);
+//
+//        p.computePath("SFO","ORD");
+//        System.out.println(p.getPathLength());
+//        Iterator<String> path = p.getPath();
+//        path.forEachRemaining(System.out::println);
     }
 }
