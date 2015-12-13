@@ -21,15 +21,6 @@ public class Lab3 {
         System.out.println(p.getPathLength());
         Iterator<String> path = p.getPath();
         path.forEachRemaining(System.out::println);
-//
-//        Lab3File f = new Lab3File();
-//        List<BStop> stops = f.readStops("stops-air.txt");
-//        List<BLineTable> lines = f.readLines("lines-air.txt");
-//        Path<String> p = new MyPath(stops, lines);
-//
-//        p.computePath("SFO","ORD");
-//        System.out.println(p.getPathLength());
-//        Iterator<String> path = p.getPath();
-//        path.forEachRemaining(System.out::println);
+
     }
 }
