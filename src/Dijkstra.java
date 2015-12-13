@@ -10,7 +10,9 @@ import java.util.Iterator;
 public class Dijkstra<T> {
 
     /**
-     * Computes the shortest path between two nodes in a network
+     * Computes the shortest path between two nodes in a network. This implementation only
+     * adds node to the frontier if they are connected to a visited node, so it technically
+     * works for infinite graphs
      * @param n network
      * @param start starting node
      * @param end goal node
@@ -92,6 +94,10 @@ public class Dijkstra<T> {
             return !(node != null ? !node.equals(that.node) : that.node != null);
         }
 
+        /**
+         * Hash function that is only based on the node (constant since node hash is constant
+         * @return hashCode
+         */
         @Override
         public int hashCode() {
             return node != null ? node.hashCode() : 0;
