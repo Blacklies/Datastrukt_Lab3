@@ -1,8 +1,4 @@
-import Lab3Help.BLineStop;
-import Lab3Help.BLineTable;
-import Lab3Help.BStop;
-import Lab3Help.Path;
-
+import Lab3Help.*;
 import java.util.*;
 import java.util.stream.Collectors;
 

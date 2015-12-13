@@ -75,9 +75,9 @@ public class Network<E> {
     }
 
     public static class Node<E> {
-        public final E value;
-        private final int hash;
-        private HashMap<Pair<Node<E>, Integer>, Pair<Node<E>, Integer>> adjacents;
+        public final E value; //value of the node
+        private final int hash; //stores the hash for optimisation (maybe already happens in java?)
+        private HashMap<Pair<Node<E>, Integer>, Pair<Node<E>, Integer>> adjacents; //adjacent nodes
 
         /**
          * Creates a node.
@@ -123,6 +123,9 @@ public class Network<E> {
             return hashCode() == node.hashCode() && value == node.value;
         }
 
+        /**
+         * @return the hash (constant since the value is stored).
+         */
         @Override
         public int hashCode() {
             return hash;

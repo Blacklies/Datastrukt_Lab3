@@ -9,7 +9,7 @@ public class Lab3 {
     public static void main(String[] args) throws IOException, MalformedData {
 
         if(args.length != 4){
-            System.out.println("GÅR INTE DÖÖÖ");
+            System.out.println("Wrong input, please supply 4 arguments");
             return;
         }
         Lab3File f = new Lab3File();
