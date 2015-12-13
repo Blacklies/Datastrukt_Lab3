@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class MyPath implements Path<String> {
 
-    private LinkedList<String> currentPath = new LinkedList<>(); // hold information about the current path
+    private LinkedList<String> currentPath = new LinkedList<>(); // holds information about the current path
     private int pathLength; // current path length
     private Network<String> network; //represents the bus network
     private Dijkstra<String> dijkstra = new Dijkstra<>(); // helper for computing best path

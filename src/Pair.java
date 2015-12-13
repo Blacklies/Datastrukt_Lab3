@@ -1,3 +1,8 @@
+/**
+ * Container class that holds (pairs) two objects
+ * @param <A> type of first object
+ * @param <B> type of second object
+ */
 public class Pair<A, B> {
     public final A first;
     public final B second;
@@ -44,7 +49,7 @@ public class Pair<A, B> {
     }
 
     /**
-     * Writes out the pair as a string.
+     * Returns the string representation of the pair.
      * @return A string of the pairs.
      */
     public String toString()

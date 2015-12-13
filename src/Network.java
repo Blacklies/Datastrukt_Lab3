@@ -1,6 +1,10 @@
 import java.util.*;
 
 
+/**
+ * A directed weighted graph
+ * @param <E> value type of each node
+ */
 public class Network<E> {
 
     private ArrayList<Node<E>> nodes;
