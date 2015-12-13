@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class Network<E> {
 
     private ArrayList<Node<E>> nodes;

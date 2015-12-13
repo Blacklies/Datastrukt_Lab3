@@ -2,8 +2,22 @@ import java.util.Deque;
 import java.util.HashSet;
 import java.util.Iterator;
 
+/**
+ * A helper class for Network that contains logic for pathfinding.
+ * Based on Dijkstras algorith
+ * @param <T>
+ */
 public class Dijkstra<T> {
 
+    /**
+     * Computes the shortest path between two nodes in a network
+     * @param n network
+     * @param start starting node
+     * @param end goal node
+     * @param resultingPath List to which the best path is written
+     * @return length of the best path
+     * @throws NoPathException if no path was found
+     */
     public int computeFromTo(Network<T> n, T start, T end, Deque<T> resultingPath) throws NoPathException {
         PriorityQueue<DijkstraNode> frontier = new PriorityQueue<>((o1, o2) -> o1.cost.compareTo(o2.cost));
         HashSet<DijkstraNode> explored = new HashSet<>();
@@ -46,11 +60,22 @@ public class Dijkstra<T> {
         throw new NoPathException("there is no path");
     }
 
+    /**
+     * Represents a node in Dijkstras algorithm. Stores additional information about
+     * cost to reach this node, and previous node in the best path
+     */
     private class DijkstraNode {
         Network.Node<T> node;
         Integer cost;
         DijkstraNode previous;
 
+        /**
+         * Constructs a Dijkstra node given the node that it is based on, the cost to reach that node
+         * and the previous node (in the best path)
+         * @param node Node that it is based on
+         * @param cost smallest (known) cost to reach this node
+         * @param previous node in the best path
+         */
         public DijkstraNode(Network.Node<T> node, Integer cost, DijkstraNode previous) {
             this.node = node;
             this.cost = cost;
@@ -74,6 +99,9 @@ public class Dijkstra<T> {
     }
 }
 
+/**
+ * Exception that is thrown when no path is found
+ */
 class NoPathException extends Exception {
     public NoPathException(String message) {
         super(message);
