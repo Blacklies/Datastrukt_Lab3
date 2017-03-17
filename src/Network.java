@@ -77,7 +77,7 @@ public class Network<E> {
     public static class Node<E> {
         public final E value; //value of the node
         private final int hash; //stores the hash for optimisation (maybe already happens in java?)
-        private HashMap<Pair<Node<E>, Integer>, Pair<Node<E>, Integer>> adjacents; //adjacent nodes
+        private HashMap<Node<E>, Pair<Node<E>, Integer>> adjacents; //adjacent nodes
 
         /**
          * Creates a node.
@@ -91,17 +91,18 @@ public class Network<E> {
         }
 
         /**
-         * Adds an adjacent.
+         * Adds an adjacent. Checks if this connection already exists and if it does it chooses the
+         * one with the smallest weight.
          * @param node The adjacent.
          * @param weight The weight of the connection from the node to the adjacent.
          */
         protected void addAdjacent(Node<E> node, Integer weight) {
             Pair<Node<E>, Integer> newNode = new Pair<>(node, weight);
-            Pair<Node<E>, Integer> oldNode = adjacents.get(newNode);
+            Pair<Node<E>, Integer> oldNode = adjacents.get(node);
             if (oldNode == null) {
-                adjacents.put(newNode, newNode);
+                adjacents.put(node, newNode);
             } else if (oldNode.second > newNode.second) {
-                adjacents.put(newNode, newNode);
+                adjacents.put(node, newNode);
             }
         }
 
